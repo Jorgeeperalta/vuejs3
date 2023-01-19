@@ -82,6 +82,7 @@ function saludoFun(cont) {
 }
 // lifecycle hooks
 onMounted(() => {
+  counter.monedas()
   console.log(`The initial count is ${count.value}.`);
   console.log("The initial count is dsfdf", count.value);
 });

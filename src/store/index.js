@@ -10,29 +10,18 @@ export const useCounterStore = defineStore('counter', {
       this.count++
     },
     monedas (){
-        // fetch('https://jsonplaceholder.typicode.com/users')
-        // .then(res => res.json())
-        // .then(res => {
-        //   this.items = res
-        
-        // })
-        // .catch(err => {
-        //   console.log(err)
-        // })
+     
+            var requestOptions = {
+            method: 'GET',
+            
+            
+            redirect: 'follow'
+            };
 
-  
-
-var requestOptions = {
-  method: 'GET',
-  
- 
-  redirect: 'follow'
-};
-
-fetch("https://jsonplaceholder.typicode.com/posts", requestOptions)
-  .then(response => response.json())
-  .then(result =>this.items =result)
-  .catch(error => console.log('error', error));
+            fetch("https://jsonplaceholder.typicode.com/posts", requestOptions)
+            .then(response => response.json())
+            .then(result =>this.items =result)
+            .catch(error => console.log('error', error));
     },
     selecciona (){
         this.items.forEach (item =>{
