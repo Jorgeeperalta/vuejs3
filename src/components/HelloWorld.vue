@@ -2,14 +2,24 @@
   <v-container>
     <v-row class="text-center">
       <h1>desde HelloWorld</h1>
-      <v-btn href="/about">iouhgoihoihoi</v-btn>
+      <v-btn href="/about">About</v-btn>
       <v-btn @click="increment">Count is: {{ count }}</v-btn>
       <v-btn @click="deincrement">Count is: {{ count }}</v-btn>
       <v-label>Desde pinia</v-label>
-      <v-btn  @click="counter.increment()">pinia {{ counter.count }}</v-btn>
+      <v-btn @click="counter.increment()">pinia {{ counter.count }}</v-btn>
 
       <v-btn @click="counter.search()">Buscar</v-btn>
-      <p>{{ counter.entries  }}</p>
+      <p>{{ counter.entries }}</p>
+      <v-btn @click="counter.monedas()">Buscar</v-btn>
+     
+      <v-autocomplete
+        label="Monedas"
+        :items="counter.items"
+        item-text="title"
+        item-value="id"
+      >
+      </v-autocomplete>
+      <v-btn @click="counter.selecciona()">Selecciona</v-btn>
       <h3>{{ saludoFun(count) }}</h3>
       <v-text-field v-model="A0"></v-text-field>
       <v-text-field v-model="A1"></v-text-field>
@@ -32,10 +42,8 @@
 
 <script setup>
 import { ref, onMounted, watchEffect, computed } from "vue";
-import { useCounterStore } from '@/store/index'
-const counter = useCounterStore()
-
-
+import { useCounterStore } from "@/store/index";
+const counter = useCounterStore();
 
 const x = ref(0);
 function onMousemove(e) {

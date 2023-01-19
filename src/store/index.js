@@ -2,15 +2,46 @@ import { defineStore } from 'pinia'
 
 export const useCounterStore = defineStore('counter', {
   state: () => {
-    return { count: 0 , entries :[]}
+    return { count: 0 , entries :[], items: [], arr: [] };
   },
-  // could also be defined as
-  // state: () => ({ count: 0 })
+ 
   actions: {
     increment() {
       this.count++
     },
+    monedas (){
+        // fetch('https://jsonplaceholder.typicode.com/users')
+        // .then(res => res.json())
+        // .then(res => {
+        //   this.items = res
+        
+        // })
+        // .catch(err => {
+        //   console.log(err)
+        // })
 
+  
+
+var requestOptions = {
+  method: 'GET',
+  
+ 
+  redirect: 'follow'
+};
+
+fetch("https://jsonplaceholder.typicode.com/posts", requestOptions)
+  .then(response => response.json())
+  .then(result =>this.items =result)
+  .catch(error => console.log('error', error));
+    },
+    selecciona (){
+        this.items.forEach (item =>{
+            this.arr.push(item.title)
+           
+        }
+            )
+         
+    },
     search () {
        
         // Lazily load input items
