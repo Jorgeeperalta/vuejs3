@@ -5,6 +5,11 @@
       <v-btn href="/about">iouhgoihoihoi</v-btn>
       <v-btn @click="increment">Count is: {{ count }}</v-btn>
       <v-btn @click="deincrement">Count is: {{ count }}</v-btn>
+      <v-label>Desde pinia</v-label>
+      <v-btn  @click="counter.increment()">pinia {{ counter.count }}</v-btn>
+
+      <v-btn @click="counter.search()">Buscar</v-btn>
+      <p>{{ counter.entries  }}</p>
       <h3>{{ saludoFun(count) }}</h3>
       <v-text-field v-model="A0"></v-text-field>
       <v-text-field v-model="A1"></v-text-field>
@@ -27,6 +32,11 @@
 
 <script setup>
 import { ref, onMounted, watchEffect, computed } from "vue";
+import { useCounterStore } from '@/store/index'
+const counter = useCounterStore()
+
+
+
 const x = ref(0);
 function onMousemove(e) {
   x.value = e.clientX;
